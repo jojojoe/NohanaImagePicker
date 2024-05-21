@@ -17,7 +17,7 @@ s.source = {
     :tag => s.version
 }
 
-s.source_files = 'NohanaImagePicker/**/*'
+s.source_files = 'NohanaImagePicker/**/*.swift'
 s.resource  = "NohanaImagePicker/*.{lproj,xcassets,storyBoard}"
 s.deprecated = true
 end
