@@ -10,7 +10,7 @@ s.authors = { "Joe" => "zx804463232@gmail.com" }
 
 s.swift_version = '5.0'
 s.requires_arc = true
-s.ios.deployment_target = '9.3'
+s.ios.deployment_target = '13.0'
     
 s.source = {
     :git => 'https://github.com/jojojoe/NohanaImagePicker.git',
