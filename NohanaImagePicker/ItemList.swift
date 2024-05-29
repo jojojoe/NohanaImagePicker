@@ -17,6 +17,7 @@
 import UIKit
 import CoreFoundation
 import CoreGraphics
+import Photos
 
 public protocol ItemList: Collection {
     associatedtype Item
@@ -34,6 +35,7 @@ extension ItemList {
 public protocol Asset {
     var identifier: Int { get }
     func image(targetSize: CGSize, handler: @escaping (ImageData?) -> Void)
+    func image(targetSize: CGSize, option: PHImageRequestOptions, handler: @escaping (ImageData?) -> Void)
 }
 
 public struct ImageData {
