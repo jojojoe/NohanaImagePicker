@@ -110,7 +110,6 @@ class AssetListViewController: UICollectionViewController, UICollectionViewDeleg
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         nohanaImagePickerController.delegate?.nohanaImagePicker?(nohanaImagePickerController, didSelectPhotoKitAsset: photoKitAssetList[indexPath.item].originalAsset)
-        // MARK: 本次修改了 AssetList.storyboard 里面点击Cell的跳转到预览页面的触发连线，所以点击Cell之后不会跳转到预览页面
     }
     
     @available(iOS 13.0, *)
