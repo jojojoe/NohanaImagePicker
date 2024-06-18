@@ -109,6 +109,11 @@ class DemoListViewController: UITableViewController, NohanaImagePickerController
     @objc func showDefaultPicker() {
         let picker = NohanaImagePickerController()
         picker.delegate = self
+        picker.isHiddenPhotoAuthorizationLimitedView = false
+        picker.maximumNumberOfSelection = 1
+        picker.canPickAsset = { (asset: Asset) -> Bool in
+            return false
+        }
         present(picker, animated: true, completion: nil)
     }
 
@@ -218,6 +223,16 @@ class DemoListViewController: UITableViewController, NohanaImagePickerController
 
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didSelectPhotoKitAsset asset: PHAsset) {
         print("🐷\(#function)\n\tasset = \(asset)\n\t")
+        // MARK: 定制版：选择单个图片后，可以选择是否让picker dismiss 也可以在这进行后续操作
+        /*
+         // MARK: 隐藏Cell的角picker按钮 return false, 如果是true 就会显示picker按钮
+         
+         picker.canPickAsset = { (asset: Asset) -> Bool in
+             return false
+         }
+
+         */
+        
     }
     
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didSelectAssetDateSectionAssets assets: [PHAsset], date: Date?) {
