@@ -110,7 +110,13 @@ class AssetListViewController: UICollectionViewController, UICollectionViewDeleg
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         nohanaImagePickerController.delegate?.nohanaImagePicker?(nohanaImagePickerController, didSelectPhotoKitAsset: photoKitAssetList[indexPath.item].originalAsset)
-        // MARK: 本次修改了 AssetList.storyboard 里面点击Cell的跳转到预览页面的触发连线，所以点击Cell之后不会跳转到预览页面
+        
+        //+ MARK: 本次修改了，点击Cell的时候，不展示预览页面，显示Cell的选中状态，需要显示选择角标按钮
+        if let cell = collectionView.cellForItem(at: indexPath) as? AssetCell {
+            cell.didPushPickButton(cell.pickButton)
+        }
+        //+
+        
     }
     
     @available(iOS 13.0, *)
@@ -206,4 +212,5 @@ class AssetListViewController: UICollectionViewController, UICollectionViewDeleg
     @IBSegueAction func makeDetailList(_ coder: NSCoder) -> AssetDetailListViewController? {
         return AssetDetailListViewController(coder: coder, nohanaImagePickerController: nohanaImagePickerController, photoKitAssetList: photoKitAssetList)
     }
+    
 }
