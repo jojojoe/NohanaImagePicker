@@ -71,6 +71,7 @@ open class NohanaImagePickerController: UIViewController {
             return bundle
         #endif
     }()
+    open var nohanaNavigationController: UINavigationController!
     let pickedAssetList: PickedAssetList
     let mediaType: MediaType
     let enableExpandingPhotoAnimation: Bool
@@ -120,7 +121,7 @@ open class NohanaImagePickerController: UIViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = config.color.background
         // show rootViewController
         let storyboard = UIStoryboard(name: "NohanaImagePicker", bundle: assetBundle)
         let rootViewController = storyboard.instantiateViewController(identifier: "RootViewController", creator: { coder in
@@ -133,7 +134,9 @@ open class NohanaImagePickerController: UIViewController {
                 return UINavigationController(rootViewController: rootViewController)
             }
         }()
-
+        
+        nohanaNavigationController = navigationController
+        
         let navigationBarAppearance = navigationBarAppearance(self)
         navigationController.navigationBar.standardAppearance = navigationBarAppearance
         navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
@@ -160,6 +163,12 @@ open class NohanaImagePickerController: UIViewController {
         ])
         navigationController.view.layoutIfNeeded()
         navigationController.didMove(toParent: self)
+        
+        //
+        navigationController.view.alpha = 0
+        UIView.animate(withDuration: 0.25, delay: 0.15) {
+            navigationController.view.alpha = 1
+        }
     }
 
     open func pickAsset(_ asset: Asset) {

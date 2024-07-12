@@ -60,7 +60,7 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = nohanaImagePickerController.config.color.background
         // titleView
         titleView.tintColor = nohanaImagePickerController.config.color.navigationBarForeground
         titleView.addTarget(self, action: #selector(didTapTitleView), for: .touchUpInside)
